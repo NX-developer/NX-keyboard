@@ -128,4 +128,7 @@
     <string name="dev_test_keyboard_title">कीबोर्ड टेस्ट</string>
     <string name="dev_test_keyboard_summary">डायग्नोस्टिक चलाएँ और रिपोर्ट सहेजें</string>
     <string name="dev_test_report">रिपोर्ट सहेजी (%1$d समस्याएँ)</string>
+    <string name="clipboard_expiry_custom">कस्टम</string>
+    <string name="clipboard_expiry_custom_title">कस्टम घंटे</string>
+    <string name="clipboard_expiry_custom_summary">समाप्ति घंटे (कस्टम चुनने पर)</string>
 </resources>

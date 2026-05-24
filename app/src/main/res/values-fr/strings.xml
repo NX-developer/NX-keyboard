@@ -128,4 +128,7 @@ Le texte copié apparaîtra ici.</string>
     <string name="dev_test_keyboard_title">Tester le clavier</string>
     <string name="dev_test_keyboard_summary">Exécuter des tests et enregistrer un rapport</string>
     <string name="dev_test_report">Rapport enregistré (%1$d problèmes)</string>
+    <string name="clipboard_expiry_custom">Personnalisé</string>
+    <string name="clipboard_expiry_custom_title">Heures personnalisées</string>
+    <string name="clipboard_expiry_custom_summary">Heures avant expiration (si Personnalisé)</string>
 </resources>

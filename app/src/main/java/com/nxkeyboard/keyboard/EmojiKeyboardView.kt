@@ -164,6 +164,27 @@ class EmojiKeyboardView @JvmOverloads constructor(
         }
     }
 
+    private val emojiReadyListener: () -> Unit = {
+        post { (grid.adapter as? EmojiAdapter)?.notifyDataSetChanged() }
+    }
+
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+        com.nxkeyboard.EmojiCompatState.addListener(emojiReadyListener)
+        try { androidx.emoji2.text.EmojiCompat.get().load() } catch (_: Throwable) {}
+        postDelayed({
+            (grid.adapter as? EmojiAdapter)?.notifyDataSetChanged()
+        }, 400)
+        postDelayed({
+            (grid.adapter as? EmojiAdapter)?.notifyDataSetChanged()
+        }, 1500)
+    }
+
+    override fun onDetachedFromWindow() {
+        super.onDetachedFromWindow()
+        com.nxkeyboard.EmojiCompatState.removeListener(emojiReadyListener)
+    }
+
     private fun dp(value: Int): Int =
         (value * resources.displayMetrics.density).toInt()
 
@@ -191,7 +212,15 @@ class EmojiKeyboardView @JvmOverloads constructor(
 
         override fun onBindViewHolder(holder: VH, position: Int) {
             val emoji = items[position]
-            holder.text.text = emoji
+            val isFlag = emoji.codePoints().anyMatch { it in 0x1F1E6..0x1F1FF }
+            val processed = if (isFlag) {
+                emoji
+            } else {
+                try {
+                    androidx.emoji2.text.EmojiCompat.get().process(emoji) ?: emoji
+                } catch (_: Throwable) { emoji }
+            }
+            holder.text.text = processed
             holder.text.setOnClickListener { onClick(emoji) }
         }
 

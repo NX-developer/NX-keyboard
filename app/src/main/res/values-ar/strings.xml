@@ -128,4 +128,7 @@
     <string name="dev_test_keyboard_title">اختبار لوحة المفاتيح</string>
     <string name="dev_test_keyboard_summary">تشغيل الفحوصات وحفظ تقرير</string>
     <string name="dev_test_report">حُفظ التقرير (%1$d مشاكل)</string>
+    <string name="clipboard_expiry_custom">مخصص</string>
+    <string name="clipboard_expiry_custom_title">ساعات مخصصة</string>
+    <string name="clipboard_expiry_custom_summary">الساعات قبل الانتهاء (عند اختيار مخصص)</string>
 </resources>

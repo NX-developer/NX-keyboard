@@ -103,7 +103,12 @@ object ClipboardHelper {
     }
 
     private fun pruneExpired(context: Context) {
-        val expiryHours = PrefsHelper.getString(context, "clipboard_expiry_hours", "24").toLongOrNull() ?: 24L
+        val expiryPref = PrefsHelper.getString(context, "clipboard_expiry_hours", "24")
+        val expiryHours: Long = when (expiryPref) {
+            "0" -> 0L
+            "custom" -> PrefsHelper.getString(context, "clipboard_expiry_custom_hours", "48").toLongOrNull() ?: 48L
+            else -> expiryPref.toLongOrNull() ?: 24L
+        }
         if (expiryHours <= 0L) return
         val expiryMs = expiryHours * 3600L * 1000L
         val now = System.currentTimeMillis()

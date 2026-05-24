@@ -128,4 +128,7 @@ Nəsə kopyaladıqda burada görünəcək.</string>
     <string name="dev_test_keyboard_title">Klaviaturanı test et</string>
     <string name="dev_test_keyboard_summary">Diaqnostika işlət, hesabat saxla</string>
     <string name="dev_test_report">Test hesabatı saxlandı (%1$d problem)</string>
+    <string name="clipboard_expiry_custom">Xüsusi</string>
+    <string name="clipboard_expiry_custom_title">Xüsusi müddət (saat)</string>
+    <string name="clipboard_expiry_custom_summary">Element neçə saat sonra silinsin (Xüsusi seçildikdə)</string>
 </resources>

@@ -128,4 +128,7 @@
     <string name="dev_test_keyboard_title">Тестировать клавиатуру</string>
     <string name="dev_test_keyboard_summary">Запустить тесты и сохранить отчёт</string>
     <string name="dev_test_report">Отчёт сохранён (%1$d проблем)</string>
+    <string name="clipboard_expiry_custom">Свое</string>
+    <string name="clipboard_expiry_custom_title">Свои часы</string>
+    <string name="clipboard_expiry_custom_summary">Часы до удаления (при выборе Свое)</string>
 </resources>

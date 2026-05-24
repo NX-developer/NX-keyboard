@@ -53,32 +53,33 @@ class ClipboardPanel @JvmOverloads constructor(
             setPadding(dp(10), dp(8), dp(10), dp(6))
         }
         val title = TextView(context).apply {
-            text = context.getString(R.string.clipboard_panel_title)
+            text = "Pano"
             textSize = 15f
+            setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_nx_clipboard, 0, 0, 0)
+            compoundDrawablePadding = dp(8)
+            gravity = Gravity.CENTER_VERTICAL
             setPadding(0, 0, dp(8), 0)
         }
         headerRow.addView(title, LayoutParams(0, LayoutParams.WRAP_CONTENT, 1f))
-        val clearBtn = TextView(context).apply {
-            text = context.getString(R.string.clipboard_clear)
-            textSize = 12f
-            setPadding(dp(8), dp(4), dp(8), dp(4))
+        val clearBtn = android.widget.ImageView(context).apply {
+            setImageResource(R.drawable.ic_nx_delete)
+            setPadding(dp(10), dp(6), dp(10), dp(6))
             setOnClickListener {
                 HapticHelper.keyPress(this)
                 callback?.onClearHistory()
                 refresh()
             }
         }
-        headerRow.addView(clearBtn)
-        val closeBtn = TextView(context).apply {
-            text = " ✕ "
-            textSize = 16f
-            setPadding(dp(8), dp(4), dp(8), dp(4))
+        headerRow.addView(clearBtn, LayoutParams(dp(40), dp(40)))
+        val closeBtn = android.widget.ImageView(context).apply {
+            setImageResource(R.drawable.ic_nx_close)
+            setPadding(dp(10), dp(6), dp(10), dp(6))
             setOnClickListener {
                 HapticHelper.keyPress(this)
                 callback?.onClose()
             }
         }
-        headerRow.addView(closeBtn)
+        headerRow.addView(closeBtn, LayoutParams(dp(40), dp(40)))
         addView(headerRow)
 
         val scroll = ScrollView(context).apply {
@@ -157,9 +158,8 @@ class ClipboardPanel @JvmOverloads constructor(
         }
         container.addView(textView, LayoutParams(0, LayoutParams.WRAP_CONTENT, 1f))
 
-        val pinBtn = TextView(context).apply {
-            this.text = if (isPinned) "📌" else "📍"
-            textSize = 16f
+        val pinBtn = android.widget.ImageView(context).apply {
+            setImageResource(if (isPinned) R.drawable.ic_nx_pin else R.drawable.ic_nx_pin_outline)
             setPadding(dp(10), dp(10), dp(8), dp(10))
             setOnClickListener {
                 HapticHelper.keyPress(this)
@@ -171,12 +171,11 @@ class ClipboardPanel @JvmOverloads constructor(
                 refresh()
             }
         }
-        container.addView(pinBtn)
+        container.addView(pinBtn, LayoutParams(dp(40), dp(40)))
 
         if (!isPinned) {
-            val deleteBtn = TextView(context).apply {
-                this.text = "🗑"
-                textSize = 16f
+            val deleteBtn = android.widget.ImageView(context).apply {
+                setImageResource(R.drawable.ic_nx_delete)
                 setPadding(dp(8), dp(10), dp(12), dp(10))
                 setOnClickListener {
                     HapticHelper.keyPress(this)
@@ -184,9 +183,10 @@ class ClipboardPanel @JvmOverloads constructor(
                     refresh()
                 }
             }
-            container.addView(deleteBtn)
+        container.addView(deleteBtn, LayoutParams(dp(40), dp(40)))
         }
 
+        tintCardIcons(container)
         return container
     }
 
@@ -211,12 +211,30 @@ class ClipboardPanel @JvmOverloads constructor(
 
     fun applyTheme() {
         val dark = themeManager?.isDarkActive() ?: false
-        val bg = if (dark) Color.parseColor("#0A0A0A") else Color.parseColor("#F0F0F0")
+        val bg = if (dark) Color.parseColor("#0A0A0A") else Color.parseColor("#DDE2E7")
         setBackgroundColor(bg)
+        val tint = android.content.res.ColorStateList.valueOf(currentTextColor())
         for (i in 0 until headerRow.childCount) {
-            (headerRow.getChildAt(i) as? TextView)?.setTextColor(currentTextColor())
+            val child = headerRow.getChildAt(i)
+            if (child is TextView) {
+                child.setTextColor(currentTextColor())
+                androidx.core.widget.TextViewCompat.setCompoundDrawableTintList(child, tint)
+            }
+            if (child is android.widget.ImageView) {
+                child.imageTintList = tint
+            }
         }
         refresh()
+    }
+
+    private fun tintCardIcons(card: View) {
+        val tint = android.content.res.ColorStateList.valueOf(currentTextColor())
+        if (card is LinearLayout) {
+            for (i in 0 until card.childCount) {
+                val c = card.getChildAt(i)
+                if (c is android.widget.ImageView) c.imageTintList = tint
+            }
+        }
     }
 
     private fun dp(value: Int): Int =

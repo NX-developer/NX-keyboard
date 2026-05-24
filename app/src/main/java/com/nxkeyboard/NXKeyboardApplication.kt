@@ -1,10 +1,28 @@
 package com.nxkeyboard
 
 import android.app.Application
+import androidx.emoji2.bundled.BundledEmojiCompatConfig
+import androidx.emoji2.text.EmojiCompat
 
 class NXKeyboardApplication : Application() {
     override fun onCreate() {
         super.onCreate()
+        try {
+            val config = BundledEmojiCompatConfig(this)
+                .setReplaceAll(false)
+                .setMetadataLoadStrategy(EmojiCompat.LOAD_STRATEGY_DEFAULT)
+                .registerInitCallback(object : EmojiCompat.InitCallback() {
+                    override fun onInitialized() {
+                        EmojiCompatState.ready = true
+                        EmojiCompatState.notifyReady()
+                    }
+                    override fun onFailed(throwable: Throwable?) {
+                        EmojiCompatState.ready = false
+                    }
+                })
+            EmojiCompat.init(config)
+            try { EmojiCompat.get().load() } catch (_: Throwable) {}
+        } catch (_: Throwable) {}
     }
 }
 

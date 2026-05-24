@@ -128,4 +128,7 @@
     <string name="dev_test_keyboard_title">キーボードをテスト</string>
     <string name="dev_test_keyboard_summary">診断を実行しレポートを保存</string>
     <string name="dev_test_report">レポート保存 (%1$d 件の問題)</string>
+    <string name="clipboard_expiry_custom">カスタム</string>
+    <string name="clipboard_expiry_custom_title">カスタム時間</string>
+    <string name="clipboard_expiry_custom_summary">有効期限の時間(カスタム選択時)</string>
 </resources>

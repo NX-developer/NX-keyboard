@@ -53,13 +53,15 @@ class SelectionPanel @JvmOverloads constructor(
             setPadding(dp(4), dp(4), dp(4), dp(8))
         }
         val title = TextView(context).apply {
-            text = "✂ Seçim modu"
+            text = "Seçim modu"
             textSize = 14f
+            setCompoundDrawablesWithIntrinsicBounds(com.nxkeyboard.R.drawable.ic_nx_select, 0, 0, 0)
+            compoundDrawablePadding = dp(8)
+            gravity = Gravity.CENTER_VERTICAL
         }
         header.addView(title, LayoutParams(0, LayoutParams.WRAP_CONTENT, 1f))
-        val closeBtn = TextView(context).apply {
-            text = " ✕ "
-            textSize = 16f
+        val closeBtn = android.widget.ImageView(context).apply {
+            setImageResource(com.nxkeyboard.R.drawable.ic_nx_close)
             setPadding(dp(8), dp(4), dp(8), dp(4))
             setOnClickListener {
                 HapticHelper.keyPress(this)
@@ -80,7 +82,7 @@ class SelectionPanel @JvmOverloads constructor(
             gravity = Gravity.CENTER
         }
         topRow.addView(spacer())
-        topRow.addView(arrowKey("↑") { callback?.onMoveCursor(2, selecting) })
+        topRow.addView(arrowKey(com.nxkeyboard.R.drawable.ic_nx_arrow_up) { callback?.onMoveCursor(2, selecting) })
         topRow.addView(spacer())
         arrowPad.addView(topRow)
 
@@ -89,7 +91,7 @@ class SelectionPanel @JvmOverloads constructor(
             orientation = HORIZONTAL
             gravity = Gravity.CENTER
         }
-        midRow.addView(arrowKey("←") { callback?.onMoveCursor(-1, selecting) })
+        midRow.addView(arrowKey(com.nxkeyboard.R.drawable.ic_nx_arrow_left) { callback?.onMoveCursor(-1, selecting) })
         selectButton = TextView(context).apply {
             text = "SEÇ"
             textSize = 14f
@@ -107,7 +109,7 @@ class SelectionPanel @JvmOverloads constructor(
         selectParams.setMargins(dp(2), dp(2), dp(2), dp(2))
         selectButton.layoutParams = selectParams
         midRow.addView(selectButton)
-        midRow.addView(arrowKey("→") { callback?.onMoveCursor(1, selecting) })
+        midRow.addView(arrowKey(com.nxkeyboard.R.drawable.ic_nx_arrow_right) { callback?.onMoveCursor(1, selecting) })
         arrowPad.addView(midRow)
 
         // Bottom row: empty | ↓ | empty
@@ -116,7 +118,7 @@ class SelectionPanel @JvmOverloads constructor(
             gravity = Gravity.CENTER
         }
         botRow.addView(spacer())
-        botRow.addView(arrowKey("↓") { callback?.onMoveCursor(-2, selecting) })
+        botRow.addView(arrowKey(com.nxkeyboard.R.drawable.ic_nx_arrow_down) { callback?.onMoveCursor(-2, selecting) })
         botRow.addView(spacer())
         arrowPad.addView(botRow)
 
@@ -128,21 +130,21 @@ class SelectionPanel @JvmOverloads constructor(
             gravity = Gravity.CENTER_VERTICAL
             setPadding(dp(2), dp(12), dp(2), dp(2))
         }
-        actions.addView(actionKey("🅰 Tümü") { callback?.onSelectAll() })
-        actions.addView(actionKey("📋 Kopya") { callback?.onCopy() })
-        actions.addView(actionKey("✂ Kes") { callback?.onCut() })
-        actions.addView(actionKey("📥 Yapıştır") { callback?.onPaste() })
-        actions.addView(actionKey("⎵📥") { callback?.onPasteWithSpace() })
-        actions.addView(actionKey("⌫") { callback?.onDelete() })
+        actions.addView(actionKey(com.nxkeyboard.R.drawable.ic_nx_select_all, "Tümü") { callback?.onSelectAll() })
+        actions.addView(actionKey(com.nxkeyboard.R.drawable.ic_nx_copy, "Kopya") { callback?.onCopy() })
+        actions.addView(actionKey(com.nxkeyboard.R.drawable.ic_nx_cut, "Kes") { callback?.onCut() })
+        actions.addView(actionKey(com.nxkeyboard.R.drawable.ic_nx_paste, "Yapıştır") { callback?.onPaste() })
+        actions.addView(actionKey(com.nxkeyboard.R.drawable.ic_nx_paste_space, "+Yap.") { callback?.onPasteWithSpace() })
+        actions.addView(actionKey(com.nxkeyboard.R.drawable.ic_nx_backspace, "") { callback?.onDelete() })
         addView(actions)
     }
 
-    private fun arrowKey(label: String, onClick: () -> Unit): TextView {
-        val view = TextView(context).apply {
-            text = label
-            textSize = 18f
-            gravity = Gravity.CENTER
+    private fun arrowKey(iconRes: Int, onClick: () -> Unit): android.widget.ImageView {
+        val view = android.widget.ImageView(context).apply {
+            setImageResource(iconRes)
+            scaleType = android.widget.ImageView.ScaleType.CENTER_INSIDE
             background = padBackground(active = false)
+            setPadding(dp(8), dp(8), dp(8), dp(8))
             setOnClickListener {
                 HapticHelper.keyPress(this)
                 onClick()
@@ -160,15 +162,17 @@ class SelectionPanel @JvmOverloads constructor(
         return v
     }
 
-    private fun actionKey(label: String, onClick: () -> Unit): TextView {
+    private fun actionKey(iconRes: Int, label: String, onClick: () -> Unit): TextView {
         val view = TextView(context).apply {
             text = label
-            textSize = 11f
+            textSize = 10f
             gravity = Gravity.CENTER
             maxLines = 1
             isSingleLine = true
-            setPadding(dp(4), dp(8), dp(4), dp(8))
+            setPadding(dp(4), dp(6), dp(4), dp(6))
             background = padBackground(active = false)
+            setCompoundDrawablesWithIntrinsicBounds(0, iconRes, 0, 0)
+            compoundDrawablePadding = dp(2)
             setOnClickListener {
                 HapticHelper.keyPress(this)
                 onClick()
@@ -196,11 +200,12 @@ class SelectionPanel @JvmOverloads constructor(
 
     fun applyTheme() {
         val dark = themeManager?.isDarkActive() ?: false
-        val bg = if (dark) Color.parseColor("#0A0A0A") else Color.parseColor("#F0F0F0")
+        val bg = if (dark) Color.parseColor("#0A0A0A") else Color.parseColor("#DDE2E7")
         val text = if (dark) Color.WHITE else Color.parseColor("#212121")
         setBackgroundColor(bg)
         applyTextColorRecursively(this, text)
         refreshButtonBackgrounds(this)
+        tintIconsRecursively(this, text)
     }
 
     private fun refreshButtonBackgrounds(view: View) {
@@ -208,8 +213,24 @@ class SelectionPanel @JvmOverloads constructor(
             val isSelectButton = view == selectButton
             view.background = padBackground(active = isSelectButton && selecting)
         }
+        if (view is android.widget.ImageView && view.background is GradientDrawable) {
+            view.background = padBackground(active = false)
+        }
         if (view is LinearLayout) {
             for (i in 0 until view.childCount) refreshButtonBackgrounds(view.getChildAt(i))
+        }
+    }
+
+    private fun tintIconsRecursively(view: View, color: Int) {
+        val tintList = android.content.res.ColorStateList.valueOf(color)
+        if (view is android.widget.ImageView) {
+            view.imageTintList = tintList
+        }
+        if (view is TextView) {
+            androidx.core.widget.TextViewCompat.setCompoundDrawableTintList(view, tintList)
+        }
+        if (view is LinearLayout) {
+            for (i in 0 until view.childCount) tintIconsRecursively(view.getChildAt(i), color)
         }
     }
 

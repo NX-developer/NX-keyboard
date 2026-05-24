@@ -128,4 +128,7 @@ Kopierter Text erscheint hier.</string>
     <string name="dev_test_keyboard_title">Tastatur testen</string>
     <string name="dev_test_keyboard_summary">Diagnose ausführen und Bericht speichern</string>
     <string name="dev_test_report">Bericht gespeichert (%1$d Probleme)</string>
+    <string name="clipboard_expiry_custom">Benutzerdefiniert</string>
+    <string name="clipboard_expiry_custom_title">Eigene Stunden</string>
+    <string name="clipboard_expiry_custom_summary">Stunden bis Ablauf (wenn Benutzerdefiniert ausgewählt ist)</string>
 </resources>

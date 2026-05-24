@@ -5,6 +5,7 @@
         <item>@string/clipboard_expiry_6h</item>
         <item>@string/clipboard_expiry_12h</item>
         <item>@string/clipboard_expiry_24h</item>
+        <item>@string/clipboard_expiry_custom</item>
         <item>@string/clipboard_expiry_never</item>
     </string-array>
     <string-array name="clipboard_expiry_values">
@@ -12,6 +13,7 @@
         <item>6</item>
         <item>12</item>
         <item>24</item>
+        <item>custom</item>
         <item>0</item>
     </string-array>
 

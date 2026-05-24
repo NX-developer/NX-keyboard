@@ -165,4 +165,7 @@
     <string name="dev_test_keyboard_title">Test keyboard</string>
     <string name="dev_test_keyboard_summary">Run diagnostic checks and save report</string>
     <string name="dev_test_report">Test report saved (%1$d issues)</string>
+    <string name="clipboard_expiry_custom">Custom</string>
+    <string name="clipboard_expiry_custom_title">Custom expiry hours</string>
+    <string name="clipboard_expiry_custom_summary">Hours before clipboard items expire (used when Custom is selected)</string>
 </resources>

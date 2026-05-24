@@ -131,6 +131,11 @@
             app:entries="@array/clipboard_expiry_entries"
             app:entryValues="@array/clipboard_expiry_values"
             app:defaultValue="24" />
+        <EditTextPreference
+            app:key="clipboard_expiry_custom_hours"
+            app:title="@string/clipboard_expiry_custom_title"
+            app:summary="@string/clipboard_expiry_custom_summary"
+            app:defaultValue="48" />
         <Preference
             app:key="clear_clipboard_history"
             app:title="@string/clear_clipboard_history_title" />
