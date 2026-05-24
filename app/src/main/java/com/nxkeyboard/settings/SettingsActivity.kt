@@ -299,6 +299,11 @@ class SettingsActivity : AppCompatActivity() {
                 true
             }
 
+            findPreference<Preference>("dev_test_keyboard")?.setOnPreferenceClickListener {
+                runKeyboardDiagnostics()
+                true
+            }
+
             updateErrorLogSummary()
 
             findPreference<Preference>("share_error_log")?.setOnPreferenceClickListener {
@@ -318,7 +323,119 @@ class SettingsActivity : AppCompatActivity() {
                 .getBoolean("dev_mode_enabled", false)
             findPreference<Preference>("dev_force_crash")?.isVisible = enabled
             findPreference<Preference>("dev_disable")?.isVisible = enabled
+            findPreference<Preference>("dev_test_keyboard")?.isVisible = enabled
             findPreference<androidx.preference.PreferenceCategory>("cat_dev")?.isVisible = enabled
+        }
+
+        private fun runKeyboardDiagnostics() {
+            val ctx = requireContext()
+            val issues = mutableListOf<String>()
+            val ts = System.currentTimeMillis()
+
+            try {
+                val layouts = listOf("keyboard_en","keyboard_tr","keyboard_tr_f","keyboard_az","keyboard_hi",
+                    "keyboard_de","keyboard_fr","keyboard_es","keyboard_ru","keyboard_ar","keyboard_ja",
+                    "keyboard_symbols","keyboard_symbols_2")
+                for (name in layouts) {
+                    val resId = ctx.resources.getIdentifier(name, "xml", ctx.packageName)
+                    if (resId == 0) {
+                        issues.add("[layout] missing: $name")
+                    }
+                }
+            } catch (e: Throwable) {
+                issues.add("[layout] exception: ${e.message}")
+            }
+
+            try {
+                val prefs = PrefsHelper.get(ctx)
+                val enabledLangs = prefs.getStringSet("enabled_languages", null)
+                if (enabledLangs.isNullOrEmpty()) {
+                    issues.add("[prefs] no enabled languages")
+                }
+                val theme = prefs.getString("theme", null)
+                if (theme.isNullOrBlank()) {
+                    issues.add("[prefs] theme not initialized")
+                }
+            } catch (e: Throwable) {
+                issues.add("[prefs] exception: ${e.message}")
+            }
+
+            try {
+                val emojiState = androidx.emoji2.text.EmojiCompat.get().loadState
+                if (emojiState != androidx.emoji2.text.EmojiCompat.LOAD_STATE_SUCCEEDED) {
+                    issues.add("[emoji2] not loaded (state=$emojiState)")
+                }
+            } catch (e: Throwable) {
+                issues.add("[emoji2] uninitialized: ${e.message}")
+            }
+
+            try {
+                val cb = ctx.getSystemService(android.content.Context.CLIPBOARD_SERVICE) as? android.content.ClipboardManager
+                if (cb == null) issues.add("[clipboard] service unavailable")
+            } catch (e: Throwable) {
+                issues.add("[clipboard] exception: ${e.message}")
+            }
+
+            try {
+                if (!android.speech.SpeechRecognizer.isRecognitionAvailable(ctx)) {
+                    issues.add("[voice] speech recognition unavailable")
+                }
+            } catch (e: Throwable) {
+                issues.add("[voice] exception: ${e.message}")
+            }
+
+            try {
+                val key = com.nxkeyboard.ai.ApiKeyVault.resolve(ctx) ?: ""
+                if (key.isBlank() && PrefsHelper.getString(ctx, "ai_user_key", "").isBlank()) {
+                    issues.add("[ai] no API key configured")
+                }
+            } catch (e: Throwable) {
+                issues.add("[ai] exception: ${e.message}")
+            }
+
+            val report = buildString {
+                append("=== DEV KEYBOARD TEST REPORT ===\n")
+                append("Timestamp: ${java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(java.util.Date())}\n")
+                append("Device: ${android.os.Build.MANUFACTURER} ${android.os.Build.MODEL}\n")
+                append("Android: ${android.os.Build.VERSION.RELEASE} (SDK ${android.os.Build.VERSION.SDK_INT})\n")
+                append("Issues found: ${issues.size}\n\n")
+                if (issues.isEmpty()) {
+                    append("All checks passed ✓\n")
+                } else {
+                    for (issue in issues) {
+                        append("- $issue\n")
+                    }
+                }
+            }
+
+            try {
+                val dir = java.io.File(ctx.filesDir, "dev_reports").apply { mkdirs() }
+                val file = java.io.File(dir, "test_$ts.txt")
+                file.writeText(report)
+                android.widget.Toast.makeText(ctx,
+                    getString(R.string.dev_test_report, issues.size),
+                    android.widget.Toast.LENGTH_LONG).show()
+                shareTextFile(file)
+            } catch (e: Throwable) {
+                android.widget.Toast.makeText(ctx,
+                    "Test failed: ${e.message}",
+                    android.widget.Toast.LENGTH_LONG).show()
+            }
+        }
+
+        private fun shareTextFile(file: java.io.File) {
+            try {
+                val ctx = requireContext()
+                val uri = androidx.core.content.FileProvider.getUriForFile(
+                    ctx, ctx.packageName + ".fileprovider", file)
+                val intent = Intent(Intent.ACTION_SEND).apply {
+                    type = "text/plain"
+                    putExtra(Intent.EXTRA_STREAM, uri)
+                    putExtra(Intent.EXTRA_SUBJECT, "NX Keyboard Test Report")
+                    addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                }
+                startActivity(Intent.createChooser(intent, "Share report"))
+            } catch (_: Throwable) {}
         }
 
         private fun showLicenseDialog() {

@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string-array name="clipboard_expiry_entries">
+        <item>@string/clipboard_expiry_2h</item>
+        <item>@string/clipboard_expiry_6h</item>
+        <item>@string/clipboard_expiry_12h</item>
+        <item>@string/clipboard_expiry_24h</item>
+        <item>@string/clipboard_expiry_never</item>
+    </string-array>
+    <string-array name="clipboard_expiry_values">
+        <item>2</item>
+        <item>6</item>
+        <item>12</item>
+        <item>24</item>
+        <item>0</item>
+    </string-array>
+
     <string-array name="app_language_entries">
         <item>@string/app_lang_system</item>
         <item>@string/app_lang_en</item>

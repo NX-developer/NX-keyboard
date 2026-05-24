@@ -24,6 +24,7 @@ class ClipboardPanel @JvmOverloads constructor(
         fun onPasteText(text: String)
         fun onPin(text: String)
         fun onUnpin(text: String)
+        fun onDeleteItem(text: String)
         fun onClose()
         fun onClearHistory()
     }
@@ -159,7 +160,7 @@ class ClipboardPanel @JvmOverloads constructor(
         val pinBtn = TextView(context).apply {
             this.text = if (isPinned) "📌" else "📍"
             textSize = 16f
-            setPadding(dp(10), dp(10), dp(12), dp(10))
+            setPadding(dp(10), dp(10), dp(8), dp(10))
             setOnClickListener {
                 HapticHelper.keyPress(this)
                 if (isPinned) {
@@ -171,6 +172,20 @@ class ClipboardPanel @JvmOverloads constructor(
             }
         }
         container.addView(pinBtn)
+
+        if (!isPinned) {
+            val deleteBtn = TextView(context).apply {
+                this.text = "🗑"
+                textSize = 16f
+                setPadding(dp(8), dp(10), dp(12), dp(10))
+                setOnClickListener {
+                    HapticHelper.keyPress(this)
+                    callback?.onDeleteItem(text)
+                    refresh()
+                }
+            }
+            container.addView(deleteBtn)
+        }
 
         return container
     }

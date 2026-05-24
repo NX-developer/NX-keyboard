@@ -118,4 +118,14 @@ Nəsə kopyaladıqda burada görünəcək.</string>
     <string name="dev_mode_enabled">Tərtibatçı rejimi açıldı!</string>
     <string name="dev_mode_disabled">Tərtibatçı rejimi söndürüldü</string>
     <string name="dev_mode_taps_remaining">Tərtibatçı rejiminə %1$d addım qaldı</string>
+    <string name="clipboard_expiry_title">Avtomatik təmizləmə</string>
+    <string name="clipboard_expiry_summary">Bu müddətdən köhnə elementlər silinir</string>
+    <string name="clipboard_expiry_2h">2 saat</string>
+    <string name="clipboard_expiry_6h">6 saat</string>
+    <string name="clipboard_expiry_12h">12 saat</string>
+    <string name="clipboard_expiry_24h">24 saat</string>
+    <string name="clipboard_expiry_never">Heç vaxt</string>
+    <string name="dev_test_keyboard_title">Klaviaturanı test et</string>
+    <string name="dev_test_keyboard_summary">Diaqnostika işlət, hesabat saxla</string>
+    <string name="dev_test_report">Test hesabatı saxlandı (%1$d problem)</string>
 </resources>

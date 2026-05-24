@@ -25,16 +25,15 @@
         <Key codes="61"  keyLabel="=" keyWidth="10" />
     </Row>
     <Row>
-        <Key codes="-3"  keyLabel="2/2" keyWidth="14" />
-        <Key codes="91"  keyLabel="[" keyWidth="9" />
-        <Key codes="93"  keyLabel="]" keyWidth="9" />
-        <Key codes="123" keyLabel="{" keyWidth="9" />
-        <Key codes="125" keyLabel="}" keyWidth="9" />
-        <Key codes="60"  keyLabel="&lt;" keyWidth="9" />
-        <Key codes="62"  keyLabel="&gt;" keyWidth="9" />
-        <Key codes="92"  keyLabel="&#92;" keyWidth="9" />
-        <Key codes="10003" keyLabel="✓" keyWidth="9" />
-        <Key codes="-5"  keyLabel="⌫" keyWidth="14" />
+        <Key codes="-3"  keyLabel="2/2" keyWidth="15" />
+        <Key codes="91"  keyLabel="[" keyWidth="10" />
+        <Key codes="93"  keyLabel="]" keyWidth="10" />
+        <Key codes="123" keyLabel="{" keyWidth="10" />
+        <Key codes="125" keyLabel="}" keyWidth="10" />
+        <Key codes="60"  keyLabel="&lt;" keyWidth="10" />
+        <Key codes="62"  keyLabel="&gt;" keyWidth="10" />
+        <Key codes="10003" keyLabel="✓" keyWidth="10" />
+        <Key codes="-5"  keyLabel="⌫" keyWidth="15" />
     </Row>
     <Row>
         <Key codes="-4"  keyLabel="ABC" keyWidth="14" />

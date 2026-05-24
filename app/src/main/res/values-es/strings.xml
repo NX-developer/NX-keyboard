@@ -118,4 +118,14 @@ Lo que copies aparecerá aquí.</string>
     <string name="dev_mode_enabled">¡Modo desarrollador activado!</string>
     <string name="dev_mode_disabled">Modo desarrollador desactivado</string>
     <string name="dev_mode_taps_remaining">Faltan %1$d pasos</string>
+    <string name="clipboard_expiry_title">Borrar automáticamente</string>
+    <string name="clipboard_expiry_summary">Los elementos más antiguos se eliminan</string>
+    <string name="clipboard_expiry_2h">2 horas</string>
+    <string name="clipboard_expiry_6h">6 horas</string>
+    <string name="clipboard_expiry_12h">12 horas</string>
+    <string name="clipboard_expiry_24h">24 horas</string>
+    <string name="clipboard_expiry_never">Nunca</string>
+    <string name="dev_test_keyboard_title">Probar teclado</string>
+    <string name="dev_test_keyboard_summary">Ejecutar pruebas y guardar informe</string>
+    <string name="dev_test_report">Informe guardado (%1$d problemas)</string>
 </resources>

@@ -200,6 +200,17 @@ class SelectionPanel @JvmOverloads constructor(
         val text = if (dark) Color.WHITE else Color.parseColor("#212121")
         setBackgroundColor(bg)
         applyTextColorRecursively(this, text)
+        refreshButtonBackgrounds(this)
+    }
+
+    private fun refreshButtonBackgrounds(view: View) {
+        if (view is TextView && view.background is GradientDrawable) {
+            val isSelectButton = view == selectButton
+            view.background = padBackground(active = isSelectButton && selecting)
+        }
+        if (view is LinearLayout) {
+            for (i in 0 until view.childCount) refreshButtonBackgrounds(view.getChildAt(i))
+        }
     }
 
     private fun applyTextColorRecursively(group: View, color: Int) {

@@ -165,6 +165,7 @@ class NXInputMethodService : InputMethodService() {
                 }
                 override fun onPin(text: String) { ClipboardHelper.pin(this@NXInputMethodService, text) }
                 override fun onUnpin(text: String) { ClipboardHelper.unpin(this@NXInputMethodService, text) }
+                override fun onDeleteItem(text: String) { ClipboardHelper.removeFromHistory(this@NXInputMethodService, text) }
                 override fun onClose() { closeClipboardPanel() }
                 override fun onClearHistory() { clearClipboardHistory() }
             })
@@ -485,6 +486,10 @@ class NXInputMethodService : InputMethodService() {
     }
 
     fun startVoiceInput() {
+        if (voiceInputManager.isActive()) {
+            voiceInputManager.stop()
+            return
+        }
         if (!voiceInputManager.hasPermission()) {
             Toast.makeText(this, getString(R.string.voice_permission_required), Toast.LENGTH_LONG).show()
             try {
@@ -497,7 +502,6 @@ class NXInputMethodService : InputMethodService() {
             return
         }
         voiceInputManager.start(languageManager.currentLocale)
-        
     }
 
     private fun showVoiceError(code: Int) {

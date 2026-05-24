@@ -118,4 +118,14 @@
     <string name="dev_mode_enabled">تم تفعيل وضع المطور!</string>
     <string name="dev_mode_disabled">تم تعطيل وضع المطور</string>
     <string name="dev_mode_taps_remaining">باقي %1$d خطوات لوضع المطور</string>
+    <string name="clipboard_expiry_title">المسح التلقائي بعد</string>
+    <string name="clipboard_expiry_summary">تُحذف العناصر الأقدم</string>
+    <string name="clipboard_expiry_2h">ساعتين</string>
+    <string name="clipboard_expiry_6h">6 ساعات</string>
+    <string name="clipboard_expiry_12h">12 ساعة</string>
+    <string name="clipboard_expiry_24h">24 ساعة</string>
+    <string name="clipboard_expiry_never">أبدًا</string>
+    <string name="dev_test_keyboard_title">اختبار لوحة المفاتيح</string>
+    <string name="dev_test_keyboard_summary">تشغيل الفحوصات وحفظ تقرير</string>
+    <string name="dev_test_report">حُفظ التقرير (%1$d مشاكل)</string>
 </resources>

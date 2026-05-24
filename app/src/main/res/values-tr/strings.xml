@@ -155,4 +155,14 @@
     <string name="dev_mode_enabled">Geliştirici modu açıldı!</string>
     <string name="dev_mode_disabled">Geliştirici modu kapatıldı</string>
     <string name="dev_mode_taps_remaining">Geliştirici moduna %1$d adım kaldı</string>
+    <string name="clipboard_expiry_title">Otomatik temizleme</string>
+    <string name="clipboard_expiry_summary">Bu süreden eski pano öğeleri silinir</string>
+    <string name="clipboard_expiry_2h">2 saat</string>
+    <string name="clipboard_expiry_6h">6 saat</string>
+    <string name="clipboard_expiry_12h">12 saat</string>
+    <string name="clipboard_expiry_24h">24 saat</string>
+    <string name="clipboard_expiry_never">Asla</string>
+    <string name="dev_test_keyboard_title">Klavyeyi test et</string>
+    <string name="dev_test_keyboard_summary">Tanı testleri çalıştır, rapor kaydet</string>
+    <string name="dev_test_report">Test raporu kaydedildi (%1$d sorun)</string>
 </resources>

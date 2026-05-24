@@ -118,4 +118,14 @@ Kopierter Text erscheint hier.</string>
     <string name="dev_mode_enabled">Entwickler-Modus aktiviert!</string>
     <string name="dev_mode_disabled">Entwickler-Modus deaktiviert</string>
     <string name="dev_mode_taps_remaining">Noch %1$d Schritte zum Entwickler-Modus</string>
+    <string name="clipboard_expiry_title">Automatisch löschen nach</string>
+    <string name="clipboard_expiry_summary">Ältere Einträge werden entfernt</string>
+    <string name="clipboard_expiry_2h">2 Stunden</string>
+    <string name="clipboard_expiry_6h">6 Stunden</string>
+    <string name="clipboard_expiry_12h">12 Stunden</string>
+    <string name="clipboard_expiry_24h">24 Stunden</string>
+    <string name="clipboard_expiry_never">Nie</string>
+    <string name="dev_test_keyboard_title">Tastatur testen</string>
+    <string name="dev_test_keyboard_summary">Diagnose ausführen und Bericht speichern</string>
+    <string name="dev_test_report">Bericht gespeichert (%1$d Probleme)</string>
 </resources>

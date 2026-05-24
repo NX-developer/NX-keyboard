@@ -118,4 +118,14 @@
     <string name="dev_mode_enabled">डेवलपर मोड चालू!</string>
     <string name="dev_mode_disabled">डेवलपर मोड बंद</string>
     <string name="dev_mode_taps_remaining">डेवलपर मोड के लिए %1$d और टैप</string>
+    <string name="clipboard_expiry_title">स्वतः साफ़</string>
+    <string name="clipboard_expiry_summary">पुरानी आइटम हटा दी जाती हैं</string>
+    <string name="clipboard_expiry_2h">2 घंटे</string>
+    <string name="clipboard_expiry_6h">6 घंटे</string>
+    <string name="clipboard_expiry_12h">12 घंटे</string>
+    <string name="clipboard_expiry_24h">24 घंटे</string>
+    <string name="clipboard_expiry_never">कभी नहीं</string>
+    <string name="dev_test_keyboard_title">कीबोर्ड टेस्ट</string>
+    <string name="dev_test_keyboard_summary">डायग्नोस्टिक चलाएँ और रिपोर्ट सहेजें</string>
+    <string name="dev_test_report">रिपोर्ट सहेजी (%1$d समस्याएँ)</string>
 </resources>

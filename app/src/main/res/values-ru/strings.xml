@@ -118,4 +118,14 @@
     <string name="dev_mode_enabled">Режим разработчика разблокирован!</string>
     <string name="dev_mode_disabled">Режим разработчика отключён</string>
     <string name="dev_mode_taps_remaining">Осталось %1$d шагов</string>
+    <string name="clipboard_expiry_title">Авто-очистка через</string>
+    <string name="clipboard_expiry_summary">Старые элементы удаляются</string>
+    <string name="clipboard_expiry_2h">2 часа</string>
+    <string name="clipboard_expiry_6h">6 часов</string>
+    <string name="clipboard_expiry_12h">12 часов</string>
+    <string name="clipboard_expiry_24h">24 часа</string>
+    <string name="clipboard_expiry_never">Никогда</string>
+    <string name="dev_test_keyboard_title">Тестировать клавиатуру</string>
+    <string name="dev_test_keyboard_summary">Запустить тесты и сохранить отчёт</string>
+    <string name="dev_test_report">Отчёт сохранён (%1$d проблем)</string>
 </resources>

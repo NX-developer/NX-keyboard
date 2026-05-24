@@ -124,6 +124,13 @@
     </PreferenceCategory>
 
     <PreferenceCategory app:title="@string/cat_clipboard">
+        <ListPreference
+            app:key="clipboard_expiry_hours"
+            app:title="@string/clipboard_expiry_title"
+            app:summary="@string/clipboard_expiry_summary"
+            app:entries="@array/clipboard_expiry_entries"
+            app:entryValues="@array/clipboard_expiry_values"
+            app:defaultValue="24" />
         <Preference
             app:key="clear_clipboard_history"
             app:title="@string/clear_clipboard_history_title" />
@@ -181,6 +188,10 @@
     <PreferenceCategory
         app:key="cat_dev"
         app:title="@string/cat_dev">
+        <Preference
+            app:key="dev_test_keyboard"
+            app:title="@string/dev_test_keyboard_title"
+            app:summary="@string/dev_test_keyboard_summary" />
         <Preference
             app:key="dev_force_crash"
             app:title="@string/dev_force_crash_title"

@@ -155,4 +155,14 @@
     <string name="dev_mode_enabled">Developer mode unlocked!</string>
     <string name="dev_mode_disabled">Developer mode disabled</string>
     <string name="dev_mode_taps_remaining">You are %1$d steps from developer mode</string>
+    <string name="clipboard_expiry_title">Auto-clear after</string>
+    <string name="clipboard_expiry_summary">Clipboard items older than this are removed</string>
+    <string name="clipboard_expiry_2h">2 hours</string>
+    <string name="clipboard_expiry_6h">6 hours</string>
+    <string name="clipboard_expiry_12h">12 hours</string>
+    <string name="clipboard_expiry_24h">24 hours</string>
+    <string name="clipboard_expiry_never">Never</string>
+    <string name="dev_test_keyboard_title">Test keyboard</string>
+    <string name="dev_test_keyboard_summary">Run diagnostic checks and save report</string>
+    <string name="dev_test_report">Test report saved (%1$d issues)</string>
 </resources>
