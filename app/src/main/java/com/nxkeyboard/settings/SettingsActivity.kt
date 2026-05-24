@@ -385,7 +385,7 @@ class SettingsActivity : AppCompatActivity() {
             }
 
             try {
-                val key = com.nxkeyboard.ai.ApiKeyVault.resolve(ctx) ?: ""
+                val key = com.nxkeyboard.ai.ApiKeyVault.resolve()
                 if (key.isBlank() && PrefsHelper.getString(ctx, "ai_user_key", "").isBlank()) {
                     issues.add("[ai] no API key configured")
                 }
