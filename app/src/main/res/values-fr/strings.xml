@@ -96,10 +96,10 @@
     <string name="about_version_summary">Clavier NX %1$s</string>
     <string name="about_license_title">Licence</string>
     <string name="about_license_summary">GNU AGPLv3</string>
-    <string name="clipboard_panel_title">📋 Presse-papiers</string>
-    <string name="clipboard_clear">🗑 Effacer l\'historique</string>
-    <string name="clipboard_pinned">📌 Épinglés</string>
-    <string name="clipboard_history">🕒 Historique</string>
+    <string name="clipboard_panel_title">Presse-papiers</string>
+    <string name="clipboard_clear">Effacer l\'historique</string>
+    <string name="clipboard_pinned">Épinglés</string>
+    <string name="clipboard_history">Historique</string>
     <string name="clipboard_empty">Le presse-papiers est vide.
 Le texte copié apparaîtra ici.</string>
     <string name="ai_no_text">Aucun texte à traduire</string>
@@ -131,4 +131,6 @@ Le texte copié apparaîtra ici.</string>
     <string name="clipboard_expiry_custom">Personnalisé</string>
     <string name="clipboard_expiry_custom_title">Heures personnalisées</string>
     <string name="clipboard_expiry_custom_summary">Heures avant expiration (si Personnalisé)</string>
+    <string name="show_emoji_key_title">Afficher la touche emoji</string>
+    <string name="show_emoji_key_summary">Afficher 😀 dans la rangée du bas</string>
 </resources>

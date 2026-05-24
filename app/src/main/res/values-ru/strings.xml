@@ -96,10 +96,10 @@
     <string name="about_version_summary">NX Клавиатура %1$s</string>
     <string name="about_license_title">Лицензия</string>
     <string name="about_license_summary">GNU AGPLv3</string>
-    <string name="clipboard_panel_title">📋 Буфер обмена</string>
-    <string name="clipboard_clear">🗑 Очистить историю</string>
-    <string name="clipboard_pinned">📌 Закреплённые</string>
-    <string name="clipboard_history">🕒 История</string>
+    <string name="clipboard_panel_title">Буфер обмена</string>
+    <string name="clipboard_clear">Очистить историю</string>
+    <string name="clipboard_pinned">Закреплённые</string>
+    <string name="clipboard_history">История</string>
     <string name="clipboard_empty">Буфер обмена пуст.
 Скопированное появится здесь.</string>
     <string name="ai_no_text">Нет текста для перевода</string>
@@ -131,4 +131,6 @@
     <string name="clipboard_expiry_custom">Свое</string>
     <string name="clipboard_expiry_custom_title">Свои часы</string>
     <string name="clipboard_expiry_custom_summary">Часы до удаления (при выборе Свое)</string>
+    <string name="show_emoji_key_title">Показать кнопку эмодзи</string>
+    <string name="show_emoji_key_summary">Показывать 😀 в нижнем ряду</string>
 </resources>

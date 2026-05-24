@@ -91,10 +91,10 @@
     <string name="about_license_summary">GNU AGPLv3</string>
     <string name="about_github_title">GitHub</string>
 
-    <string name="clipboard_panel_title">📋 Pano</string>
-    <string name="clipboard_clear">🗑 Geçmişi Temizle</string>
-    <string name="clipboard_pinned">📌 Sabitlenmiş</string>
-    <string name="clipboard_history">🕒 Geçmiş</string>
+    <string name="clipboard_panel_title">Pano</string>
+    <string name="clipboard_clear">Geçmişi Temizle</string>
+    <string name="clipboard_pinned">Sabitlenmiş</string>
+    <string name="clipboard_history">Geçmiş</string>
     <string name="clipboard_empty">Pano boş.\nBir şeyler kopyaladığında buraya gelecek.</string>
 
     <string name="ai_no_text">Çevirilecek metin yok</string>
@@ -168,4 +168,6 @@
     <string name="clipboard_expiry_custom">Özel</string>
     <string name="clipboard_expiry_custom_title">Özel süre (saat)</string>
     <string name="clipboard_expiry_custom_summary">Pano öğeleri kaç saat sonra silinsin (Özel seçildiğinde)</string>
+    <string name="show_emoji_key_title">Emoji tuşunu göster</string>
+    <string name="show_emoji_key_summary">Klavye alt satırında 😀 tuşunu göster</string>
 </resources>

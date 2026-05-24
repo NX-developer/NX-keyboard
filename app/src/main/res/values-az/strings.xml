@@ -96,10 +96,10 @@
     <string name="about_version_summary">NX Klaviatura %1$s</string>
     <string name="about_license_title">Lisenziya</string>
     <string name="about_license_summary">GNU AGPLv3</string>
-    <string name="clipboard_panel_title">📋 Mübadilə buferi</string>
-    <string name="clipboard_clear">🗑 Tarixçəni sil</string>
-    <string name="clipboard_pinned">📌 Sabitlənmiş</string>
-    <string name="clipboard_history">🕒 Tarixçə</string>
+    <string name="clipboard_panel_title">Mübadilə buferi</string>
+    <string name="clipboard_clear">Tarixçəni sil</string>
+    <string name="clipboard_pinned">Sabitlənmiş</string>
+    <string name="clipboard_history">Tarixçə</string>
     <string name="clipboard_empty">Mübadilə buferi boşdur.
 Nəsə kopyaladıqda burada görünəcək.</string>
     <string name="ai_no_text">Tərcümə üçün mətn yoxdur</string>
@@ -131,4 +131,6 @@ Nəsə kopyaladıqda burada görünəcək.</string>
     <string name="clipboard_expiry_custom">Xüsusi</string>
     <string name="clipboard_expiry_custom_title">Xüsusi müddət (saat)</string>
     <string name="clipboard_expiry_custom_summary">Element neçə saat sonra silinsin (Xüsusi seçildikdə)</string>
+    <string name="show_emoji_key_title">Emoji düyməsini göstər</string>
+    <string name="show_emoji_key_summary">Klaviaturanın alt sırasında 😀 düyməsini göstər</string>
 </resources>

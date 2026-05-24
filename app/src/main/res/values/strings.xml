@@ -91,10 +91,10 @@
     <string name="about_license_summary">GNU AGPLv3</string>
     <string name="about_github_title">GitHub</string>
 
-    <string name="clipboard_panel_title">📋 Clipboard</string>
-    <string name="clipboard_clear">🗑 Clear history</string>
-    <string name="clipboard_pinned">📌 Pinned</string>
-    <string name="clipboard_history">🕒 History</string>
+    <string name="clipboard_panel_title">Clipboard</string>
+    <string name="clipboard_clear">Clear history</string>
+    <string name="clipboard_pinned">Pinned</string>
+    <string name="clipboard_history">History</string>
     <string name="clipboard_empty">Clipboard is empty.\nWhen you copy something it will appear here.</string>
 
     <string name="ai_no_text">No text to translate</string>
@@ -168,4 +168,6 @@
     <string name="clipboard_expiry_custom">Custom</string>
     <string name="clipboard_expiry_custom_title">Custom expiry hours</string>
     <string name="clipboard_expiry_custom_summary">Hours before clipboard items expire (used when Custom is selected)</string>
+    <string name="show_emoji_key_title">Show emoji key</string>
+    <string name="show_emoji_key_summary">Show the 😀 key in the keyboard\'s bottom row</string>
 </resources>

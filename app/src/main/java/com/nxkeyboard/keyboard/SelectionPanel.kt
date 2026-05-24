@@ -71,12 +71,16 @@ class SelectionPanel @JvmOverloads constructor(
         header.addView(closeBtn)
         addView(header)
 
-        // Arrow pad: 3 rows, center has Select button surrounded by ↑↓←→
+        // Body: left = arrow pad, right = action grid (2 cols)
+        val body = LinearLayout(context).apply {
+            orientation = HORIZONTAL
+            gravity = Gravity.CENTER
+        }
+
         val arrowPad = LinearLayout(context).apply {
             orientation = VERTICAL
             gravity = Gravity.CENTER
         }
-        // Top row: empty | ↑ | empty
         val topRow = LinearLayout(context).apply {
             orientation = HORIZONTAL
             gravity = Gravity.CENTER
@@ -86,7 +90,6 @@ class SelectionPanel @JvmOverloads constructor(
         topRow.addView(spacer())
         arrowPad.addView(topRow)
 
-        // Mid row: ← | SELECT | →
         val midRow = LinearLayout(context).apply {
             orientation = HORIZONTAL
             gravity = Gravity.CENTER
@@ -94,9 +97,9 @@ class SelectionPanel @JvmOverloads constructor(
         midRow.addView(arrowKey(com.nxkeyboard.R.drawable.ic_nx_arrow_left) { callback?.onMoveCursor(-1, selecting) })
         selectButton = TextView(context).apply {
             text = "SEÇ"
-            textSize = 14f
+            textSize = 13f
             gravity = Gravity.CENTER
-            setPadding(dp(12), dp(14), dp(12), dp(14))
+            setPadding(dp(6), dp(10), dp(6), dp(10))
             background = padBackground(active = false)
             setOnClickListener {
                 HapticHelper.keyPress(this)
@@ -105,14 +108,13 @@ class SelectionPanel @JvmOverloads constructor(
                 text = if (selecting) "SEÇİYOR" else "SEÇ"
             }
         }
-        val selectParams = LayoutParams(dp(70), dp(56))
+        val selectParams = LayoutParams(dp(60), dp(50))
         selectParams.setMargins(dp(2), dp(2), dp(2), dp(2))
         selectButton.layoutParams = selectParams
         midRow.addView(selectButton)
         midRow.addView(arrowKey(com.nxkeyboard.R.drawable.ic_nx_arrow_right) { callback?.onMoveCursor(1, selecting) })
         arrowPad.addView(midRow)
 
-        // Bottom row: empty | ↓ | empty
         val botRow = LinearLayout(context).apply {
             orientation = HORIZONTAL
             gravity = Gravity.CENTER
@@ -121,22 +123,34 @@ class SelectionPanel @JvmOverloads constructor(
         botRow.addView(arrowKey(com.nxkeyboard.R.drawable.ic_nx_arrow_down) { callback?.onMoveCursor(-2, selecting) })
         botRow.addView(spacer())
         arrowPad.addView(botRow)
+        body.addView(arrowPad)
 
-        addView(arrowPad)
-
-        // Action buttons row
-        val actions = LinearLayout(context).apply {
-            orientation = HORIZONTAL
-            gravity = Gravity.CENTER_VERTICAL
-            setPadding(dp(2), dp(12), dp(2), dp(2))
+        // Action grid: 2 columns × 3 rows = 6 buttons next to arrow pad
+        val actionGrid = LinearLayout(context).apply {
+            orientation = VERTICAL
+            setPadding(dp(8), 0, dp(2), 0)
         }
-        actions.addView(actionKey(com.nxkeyboard.R.drawable.ic_nx_select_all, "Tümü") { callback?.onSelectAll() })
-        actions.addView(actionKey(com.nxkeyboard.R.drawable.ic_nx_copy, "Kopya") { callback?.onCopy() })
-        actions.addView(actionKey(com.nxkeyboard.R.drawable.ic_nx_cut, "Kes") { callback?.onCut() })
-        actions.addView(actionKey(com.nxkeyboard.R.drawable.ic_nx_paste, "Yapıştır") { callback?.onPaste() })
-        actions.addView(actionKey(com.nxkeyboard.R.drawable.ic_nx_paste_space, "+Yap.") { callback?.onPasteWithSpace() })
-        actions.addView(actionKey(com.nxkeyboard.R.drawable.ic_nx_backspace, "") { callback?.onDelete() })
-        addView(actions)
+        val gridRow1 = LinearLayout(context).apply { orientation = HORIZONTAL }
+        gridRow1.addView(actionKey(com.nxkeyboard.R.drawable.ic_nx_select_all, "Tümü") { callback?.onSelectAll() }, gridParams())
+        gridRow1.addView(actionKey(com.nxkeyboard.R.drawable.ic_nx_copy, "Kopya") { callback?.onCopy() }, gridParams())
+        actionGrid.addView(gridRow1)
+        val gridRow2 = LinearLayout(context).apply { orientation = HORIZONTAL }
+        gridRow2.addView(actionKey(com.nxkeyboard.R.drawable.ic_nx_cut, "Kes") { callback?.onCut() }, gridParams())
+        gridRow2.addView(actionKey(com.nxkeyboard.R.drawable.ic_nx_paste, "Yap.") { callback?.onPaste() }, gridParams())
+        actionGrid.addView(gridRow2)
+        val gridRow3 = LinearLayout(context).apply { orientation = HORIZONTAL }
+        gridRow3.addView(actionKey(com.nxkeyboard.R.drawable.ic_nx_paste_space, "+Yap.") { callback?.onPasteWithSpace() }, gridParams())
+        gridRow3.addView(actionKey(com.nxkeyboard.R.drawable.ic_nx_backspace, "Sil") { callback?.onDelete() }, gridParams())
+        actionGrid.addView(gridRow3)
+
+        body.addView(actionGrid, LayoutParams(0, LayoutParams.WRAP_CONTENT, 1f))
+        addView(body)
+    }
+
+    private fun gridParams(): LayoutParams {
+        val p = LayoutParams(dp(70), dp(50))
+        p.setMargins(dp(3), dp(3), dp(3), dp(3))
+        return p
     }
 
     private fun arrowKey(iconRes: Int, onClick: () -> Unit): android.widget.ImageView {

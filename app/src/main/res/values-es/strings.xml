@@ -96,10 +96,10 @@
     <string name="about_version_summary">Teclado NX %1$s</string>
     <string name="about_license_title">Licencia</string>
     <string name="about_license_summary">GNU AGPLv3</string>
-    <string name="clipboard_panel_title">📋 Portapapeles</string>
-    <string name="clipboard_clear">🗑 Borrar historial</string>
-    <string name="clipboard_pinned">📌 Fijados</string>
-    <string name="clipboard_history">🕒 Historial</string>
+    <string name="clipboard_panel_title">Portapapeles</string>
+    <string name="clipboard_clear">Borrar historial</string>
+    <string name="clipboard_pinned">Fijados</string>
+    <string name="clipboard_history">Historial</string>
     <string name="clipboard_empty">El portapapeles está vacío.
 Lo que copies aparecerá aquí.</string>
     <string name="ai_no_text">No hay texto para traducir</string>
@@ -131,4 +131,6 @@ Lo que copies aparecerá aquí.</string>
     <string name="clipboard_expiry_custom">Personalizado</string>
     <string name="clipboard_expiry_custom_title">Horas personalizadas</string>
     <string name="clipboard_expiry_custom_summary">Horas hasta caducidad (con Personalizado)</string>
+    <string name="show_emoji_key_title">Mostrar tecla de emoji</string>
+    <string name="show_emoji_key_summary">Mostrar 😀 en la fila inferior</string>
 </resources>

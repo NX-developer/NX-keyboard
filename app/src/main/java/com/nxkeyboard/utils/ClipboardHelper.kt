@@ -114,13 +114,15 @@ object ClipboardHelper {
         val now = System.currentTimeMillis()
         val raw = PrefsHelper.get(context).getString(HISTORY_KEY, "") ?: ""
         if (raw.isEmpty()) return
+        val pinned = getPinned(context).toSet()
         val list = raw.split("\u0001").toMutableList()
         val times = getTimestamps(context).toMutableList()
         var changed = false
         var i = 0
         while (i < list.size) {
             val ts = if (i < times.size) times[i] else now
-            if (now - ts > expiryMs) {
+            val isPinned = list[i] in pinned
+            if (!isPinned && now - ts > expiryMs) {
                 list.removeAt(i)
                 if (i < times.size) times.removeAt(i)
                 changed = true

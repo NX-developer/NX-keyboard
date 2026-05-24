@@ -301,10 +301,15 @@ class NXKeyboardView @JvmOverloads constructor(
         if (width == 0 || layout.rows.isEmpty()) return
         val totalWidth = width.toFloat()
         val singleLang = (languageManager?.enabledList?.size ?: 0) <= 1
+        val showEmojiKey = com.nxkeyboard.utils.PrefsHelper.getBoolean(context, "show_emoji_key", true)
         var y = paddingTop.toFloat()
         for ((rowIndex, row) in layout.rows.withIndex()) {
             val visibleKeys = row.keys.filter { key ->
-                !(singleLang && key.code == KeyboardLayoutManager.CODE_LANGUAGE)
+                when {
+                    singleLang && key.code == KeyboardLayoutManager.CODE_LANGUAGE -> false
+                    !showEmojiKey && key.code == KeyboardLayoutManager.CODE_EMOJI -> false
+                    else -> true
+                }
             }
             val totalPercent = visibleKeys.sumOf { it.widthPercent.toDouble() }.toFloat()
             val percentScale = if (totalPercent > 0) 100f / totalPercent else 1f
@@ -390,6 +395,11 @@ class NXKeyboardView @JvmOverloads constructor(
         canvas.drawRoundRect(rect, cornerRadius, cornerRadius, bgPaint)
         bgPaint.alpha = originalAlpha
 
+        if (key.code == KeyboardLayoutManager.CODE_SHIFT) {
+            drawShiftIcon(canvas, rect)
+            return
+        }
+
         val text = displayLabelFor(key)
         val paint = when {
             key.code == KeyboardLayoutManager.CODE_ENTER -> enterLabelPaint
@@ -403,9 +413,26 @@ class NXKeyboardView @JvmOverloads constructor(
         }
     }
 
+    private fun drawShiftIcon(canvas: Canvas, rect: android.graphics.RectF) {
+        val resId = when {
+            isCapsLocked -> R.drawable.ic_nx_shift_lock
+            isShifted -> R.drawable.ic_nx_shift_filled
+            else -> R.drawable.ic_nx_shift_outline
+        }
+        val drawable = androidx.core.content.ContextCompat.getDrawable(context, resId) ?: return
+        val tint = modifierLabelPaint.color
+        drawable.mutate()
+        drawable.setTint(tint)
+        val size = (rect.height() * 0.5f).toInt()
+        val left = (rect.centerX() - size / 2f).toInt()
+        val top = (rect.centerY() - size / 2f).toInt()
+        drawable.setBounds(left, top, left + size, top + size)
+        drawable.draw(canvas)
+    }
+
     private fun displayLabelFor(key: Key): String {
         return when (key.code) {
-            KeyboardLayoutManager.CODE_SHIFT -> if (isCapsLocked) "⇧⇧" else "⇧"
+            KeyboardLayoutManager.CODE_SHIFT -> ""
             KeyboardLayoutManager.CODE_BACKSPACE -> "⌫"
             KeyboardLayoutManager.CODE_ENTER -> enterActionLabel()
             KeyboardLayoutManager.CODE_EMOJI -> "😀"

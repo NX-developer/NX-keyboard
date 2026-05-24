@@ -96,10 +96,10 @@
     <string name="about_version_summary">لوحة مفاتيح NX %1$s</string>
     <string name="about_license_title">الترخيص</string>
     <string name="about_license_summary">GNU AGPLv3</string>
-    <string name="clipboard_panel_title">📋 الحافظة</string>
-    <string name="clipboard_clear">🗑 محو السجل</string>
-    <string name="clipboard_pinned">📌 المثبتة</string>
-    <string name="clipboard_history">🕒 السجل</string>
+    <string name="clipboard_panel_title">الحافظة</string>
+    <string name="clipboard_clear">محو السجل</string>
+    <string name="clipboard_pinned">المثبتة</string>
+    <string name="clipboard_history">السجل</string>
     <string name="clipboard_empty">الحافظة فارغة.
 سيظهر هنا ما تنسخه.</string>
     <string name="ai_no_text">لا يوجد نص للترجمة</string>
@@ -131,4 +131,6 @@
     <string name="clipboard_expiry_custom">مخصص</string>
     <string name="clipboard_expiry_custom_title">ساعات مخصصة</string>
     <string name="clipboard_expiry_custom_summary">الساعات قبل الانتهاء (عند اختيار مخصص)</string>
+    <string name="show_emoji_key_title">إظهار مفتاح الإيموجي</string>
+    <string name="show_emoji_key_summary">إظهار مفتاح 😀 في الصف السفلي</string>
 </resources>

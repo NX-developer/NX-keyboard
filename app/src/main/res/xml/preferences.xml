@@ -62,6 +62,11 @@
             app:entryValues="@array/keyboard_height_values"
             app:defaultValue="1.0" />
         <SwitchPreferenceCompat
+            app:key="show_emoji_key"
+            app:title="@string/show_emoji_key_title"
+            app:summary="@string/show_emoji_key_summary"
+            app:defaultValue="true" />
+        <SwitchPreferenceCompat
             app:key="show_top_bar"
             app:title="@string/show_top_bar_title"
             app:summary="@string/show_top_bar_summary"

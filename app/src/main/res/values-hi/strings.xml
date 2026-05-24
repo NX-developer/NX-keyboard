@@ -96,10 +96,10 @@
     <string name="about_version_summary">NX कीबोर्ड %1$s</string>
     <string name="about_license_title">लाइसेंस</string>
     <string name="about_license_summary">GNU AGPLv3</string>
-    <string name="clipboard_panel_title">📋 क्लिपबोर्ड</string>
-    <string name="clipboard_clear">🗑 इतिहास साफ़ करें</string>
-    <string name="clipboard_pinned">📌 पिन किए गए</string>
-    <string name="clipboard_history">🕒 इतिहास</string>
+    <string name="clipboard_panel_title">क्लिपबोर्ड</string>
+    <string name="clipboard_clear">इतिहास साफ़ करें</string>
+    <string name="clipboard_pinned">पिन किए गए</string>
+    <string name="clipboard_history">इतिहास</string>
     <string name="clipboard_empty">क्लिपबोर्ड खाली है।
 कॉपी की गई चीज़ें यहाँ दिखेंगी।</string>
     <string name="ai_no_text">अनुवाद के लिए कोई पाठ नहीं</string>
@@ -131,4 +131,6 @@
     <string name="clipboard_expiry_custom">कस्टम</string>
     <string name="clipboard_expiry_custom_title">कस्टम घंटे</string>
     <string name="clipboard_expiry_custom_summary">समाप्ति घंटे (कस्टम चुनने पर)</string>
+    <string name="show_emoji_key_title">इमोजी कुंजी दिखाएँ</string>
+    <string name="show_emoji_key_summary">नीचे की पंक्ति में 😀 दिखाएँ</string>
 </resources>

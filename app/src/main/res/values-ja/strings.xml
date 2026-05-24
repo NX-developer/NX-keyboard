@@ -96,10 +96,10 @@
     <string name="about_version_summary">NX キーボード %1$s</string>
     <string name="about_license_title">ライセンス</string>
     <string name="about_license_summary">GNU AGPLv3</string>
-    <string name="clipboard_panel_title">📋 クリップボード</string>
-    <string name="clipboard_clear">🗑 履歴を消去</string>
-    <string name="clipboard_pinned">📌 ピン留め</string>
-    <string name="clipboard_history">🕒 履歴</string>
+    <string name="clipboard_panel_title">クリップボード</string>
+    <string name="clipboard_clear">履歴を消去</string>
+    <string name="clipboard_pinned">ピン留め</string>
+    <string name="clipboard_history">履歴</string>
     <string name="clipboard_empty">クリップボードは空です。
 コピーするとここに表示されます。</string>
     <string name="ai_no_text">翻訳するテキストがありません</string>
@@ -131,4 +131,6 @@
     <string name="clipboard_expiry_custom">カスタム</string>
     <string name="clipboard_expiry_custom_title">カスタム時間</string>
     <string name="clipboard_expiry_custom_summary">有効期限の時間(カスタム選択時)</string>
+    <string name="show_emoji_key_title">絵文字キーを表示</string>
+    <string name="show_emoji_key_summary">最下段に 😀 を表示</string>
 </resources>
