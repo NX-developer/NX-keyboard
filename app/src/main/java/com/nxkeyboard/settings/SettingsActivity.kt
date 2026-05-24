@@ -361,15 +361,6 @@ class SettingsActivity : AppCompatActivity() {
             }
 
             try {
-                val emojiState = androidx.emoji2.text.EmojiCompat.get().loadState
-                if (emojiState != androidx.emoji2.text.EmojiCompat.LOAD_STATE_SUCCEEDED) {
-                    issues.add("[emoji2] not loaded (state=$emojiState)")
-                }
-            } catch (e: Throwable) {
-                issues.add("[emoji2] uninitialized: ${e.message}")
-            }
-
-            try {
                 val cb = ctx.getSystemService(android.content.Context.CLIPBOARD_SERVICE) as? android.content.ClipboardManager
                 if (cb == null) issues.add("[clipboard] service unavailable")
             } catch (e: Throwable) {
