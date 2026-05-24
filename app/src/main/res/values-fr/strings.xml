@@ -110,7 +110,7 @@ Le texte copié apparaîtra ici.</string>
     <string name="ai_correction_error">Erreur de correction : %1$s</string>
     <string name="voice_permission_required">Permission micro requise — dans les paramètres</string>
     <string name="voice_error">Erreur de saisie vocale (%1$d)</string>
-    <string name="ai_no_change">L'IA n'a pas pu améliorer le texte</string>
+    <string name="ai_no_change">L\'IA n\'a pas pu améliorer le texte</string>
     <string name="cat_dev">Mode développeur</string>
     <string name="dev_force_crash_title">Forcer un plantage</string>
     <string name="dev_force_crash_summary">Plante dans 1s pour tester</string>
