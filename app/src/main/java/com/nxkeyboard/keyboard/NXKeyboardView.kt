@@ -383,7 +383,12 @@ class NXKeyboardView @JvmOverloads constructor(
             key.isFunctional || key.code == KeyboardLayoutManager.CODE_SPACE -> keyModifierPaint
             else -> keyPaint
         }
+        val originalAlpha = bgPaint.alpha
+        if (backgroundBitmap != null && !isPressed && key.code != KeyboardLayoutManager.CODE_ENTER) {
+            bgPaint.alpha = 90
+        }
         canvas.drawRoundRect(rect, cornerRadius, cornerRadius, bgPaint)
+        bgPaint.alpha = originalAlpha
 
         val text = displayLabelFor(key)
         val paint = when {
