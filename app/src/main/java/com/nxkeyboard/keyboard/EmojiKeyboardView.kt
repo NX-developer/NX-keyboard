@@ -130,7 +130,7 @@ class EmojiKeyboardView @JvmOverloads constructor(
     private fun showCategory(category: EmojiData.Category) {
         currentCategory = category
         val emojis = if (category == EmojiData.Category.RECENT) {
-            RecentEmojiManager.get(context)
+            RecentEmojiManager.getAll(context)
         } else {
             EmojiData.forCategory(category)
         }
